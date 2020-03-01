@@ -1,5 +1,7 @@
 const notesCtrl = {};
-const Note = require ('../models/Note')
+const Note = require ('../models/Note');
+const {unlink} = require('fs-extra');
+const path = require('path');
 
 notesCtrl.renderNoteForm = (req, res) => {
     res.render('notes/new-note')
@@ -28,7 +30,8 @@ notesCtrl.updateNote = (req, res) => {
 };
 
 notesCtrl.deleteNote = async (req, res) => {
-    await Note.findByIdAndDelete(req.params.id);
+    const object = await Note.findByIdAndDelete(req.params.id);
+    await unlink(path.join(__dirname, '../public' + object.image));
     res.redirect('/notes');
 };
 
