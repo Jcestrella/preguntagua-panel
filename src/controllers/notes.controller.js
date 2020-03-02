@@ -1,6 +1,6 @@
 const notesCtrl = {};
-const Note = require ('../models/Note');
-const {unlink} = require('fs-extra');
+const Note = require('../models/Note');
+const { unlink } = require('fs-extra');
 const path = require('path');
 
 notesCtrl.renderNoteForm = (req, res) => {
@@ -8,25 +8,28 @@ notesCtrl.renderNoteForm = (req, res) => {
 };
 
 notesCtrl.createNewNote = async (req, res) => {
-    const{title, description} = req.body;
-    const image =  '/img/uploads/' + req.file.filename;
-    const newNote = new Note({title, description, image});
+    const { title, description } = req.body;
+    const image = '/img/uploads/' + req.file.filename;
+    const newNote = new Note({ title, description, image });
     await newNote.save();
     res.send('new note');
     console.log(newNote);
 };
 
-notesCtrl.renderNotes = async(req, res) => {
+notesCtrl.renderNotes = async (req, res) => {
     const notes = await Note.find()
-    res.render('notes/all-notes', {notes})
+    res.render('notes/all-notes', { notes })
 }
 
-notesCtrl.renderEditForm = (req, res) => {
-    res.send('render Edit Form');
+notesCtrl.renderEditForm = async (req, res) => {
+    const note = await Note.findById(req.params.id)
+    res.render('notes/edit-note', { note })
 };
 
-notesCtrl.updateNote = (req, res) => {
-    res.send('update note');
+notesCtrl.updateNote = async (req, res) => {
+    const {title, description} = req.body;
+    await Note.findByIdAndUpdate(req.params.id, {title, description})
+    res.redirect('/notes');
 };
 
 notesCtrl.deleteNote = async (req, res) => {
