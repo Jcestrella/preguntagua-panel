@@ -12,6 +12,10 @@ const NoteSchema = new Schema({
     image: {
         type: String,
         required: true
+    },
+    user:{
+        type: String,
+        required: true
     }
 }, {
     timestamps: true

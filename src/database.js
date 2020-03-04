@@ -5,7 +5,8 @@ const mongoUrl =  `mongodb://${NODE_PROJECT_HOST}/${NODE_PROJECT_DATABASE}`;
 
 mongoose.connect(mongoUrl, {
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useCreateIndex: true
 })
     .then(db => console.log('Database is connected'))
     .catch(err => console.log(err));
