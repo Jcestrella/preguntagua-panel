@@ -1,0 +1,27 @@
+<div class="row">
+    {{#each notes}}
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    {{question}} <a href="/preguntas/edit/{{_id}}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </h4>
+                <p style="background-color: rgba(39, 155, 4, 0.74)">{{correctAnswer}}</p>
+                <p style="background-color: rgba(224, 31, 31, 0.699)">{{wrongAnswerOne}}</p>
+                <p style="background-color: rgba(224, 31, 31, 0.699)">{{wrongAnswerTwo}}</p>
+                <p style="background-color: rgba(224, 31, 31, 0.699)">{{wrongAnswerThree}}</p>
+                {{#list categoria}}
+                {{/list}}
+                <form action="/preguntas/delete/{{_id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger btn-block btn-sm">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

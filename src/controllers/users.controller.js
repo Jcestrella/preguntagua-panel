@@ -44,7 +44,7 @@ usersCtrl.renderSignInForm = (req, res) => {
 
 usersCtrl.signin = passport.authenticate('local', {
     failureRedirect: '/users/signin',
-    successRedirect: '/notes',
+    successRedirect: '/preguntas',
     failureFlash: true
 });
 

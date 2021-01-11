@@ -1,0 +1,44 @@
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Edit Note</h3>
+        </div>
+        <div class="card-body">
+            <form action="/preguntas/edit/{{note.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-group">
+                    <input type="text" name="question" class="form-control" value="{{note.question}}">
+                </div>
+                <div class="form-group">
+                    <textarea name="correctAnswer" class="form-control">{{note.correctAnswer}}</textarea>
+                </div>
+                <div class="form-group">
+                    <textarea name="wrongAnswerOne" class="form-control">{{note.wrongAnswerOne}}</textarea>
+                </div>
+                <div class="form-group">
+                    <textarea name="wrongAnswerTwo" class="form-control">{{note.wrongAnswerTwo}}</textarea>
+                </div>
+                <div class="form-group">
+                    <textarea name="wrongAnswerThree" class="form-control">{{note.wrongAnswerThree}}</textarea>
+                </div>
+                <div class="form-group">
+                    <select name="categoria" class="browser-default custom-select">
+                        <option selected="">Seleccione la categoria</option>
+                        <option value="1">Calidad del agua</option>
+                        <option value="2">Ecología costera</option>
+                        <option value="3">Hidrogeología</option>
+                        <option value="4">Contaminantes</option>
+                        <option value="5">Ecología de organismos acuáticos </option>
+                        <option value="6">Microorganismos acuáticos</option>
+                        <option value="7">Comodín</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success btn-block" type="submit">
+                        Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
