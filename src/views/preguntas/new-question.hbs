@@ -6,23 +6,23 @@
         <div class="card-body">
             <form action="/preguntas/nueva-pregunta" , method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" name="question" class="form-control" placeholder="Pregunta" autofocus>
+                    <textarea type="text" name="question" class="form-control" placeholder="Pregunta" autofocus required></textarea>
                 </div>
                 <div class="form-group">
-                    <input name="correctAnswer" placeholder="Respuesta Correcta" class="form-control"></input>
+                    <input name="correctAnswer" placeholder="Respuesta Correcta" class="form-control" required></input>
                 </div>
                 <div class="form-group">
-                    <input name="wrongAnswerOne" placeholder="Respuesta Incorrecta" class="form-control"></input>
+                    <input name="wrongAnswerOne" placeholder="Respuesta Incorrecta" class="form-control" required></input>
                 </div>
                 <div class="form-group">
-                    <input name="wrongAnswerTwo" placeholder="Respuesta Incorrecta" class="form-control"></input>
+                    <input name="wrongAnswerTwo" placeholder="Respuesta Incorrecta" class="form-control" required></input>
                 </div>
                 <div class="form-group">
-                    <input name="wrongAnswerThree" placeholder="Respuesta Incorrecta" class="form-control"></input>
+                    <input name="wrongAnswerThree" placeholder="Respuesta Incorrecta" class="form-control" required></input>
                 </div>
                 <div class="form-group">
-                    <select name="categoria" class="browser-default custom-select">
-                        <option selected="">Seleccione la categoria</option>
+                    <select name="categoria" class="browser-default custom-select" required>
+                        <option value="">Seleccione la categoria</option>
                         <option value="1">Microorganismos acuáticos</option>
                         <option value="2">Calidad del agua</option>
                         <option value="3">Ecología de organismos acuáticos</option>

@@ -7,23 +7,23 @@
             <form action="/preguntas/edit/{{note.id}}?_method=PUT" method="POST">
                 <input type="hidden" name="_method" value="PUT">
                 <div class="form-group">
-                    <textarea name="question" class="form-control">{{note.question}}</textarea>
+                    <textarea name="question" class="form-control" required>{{note.question}}</textarea>
                 </div>
                 <div class="form-group">
-                    <textarea name="correctAnswer" class="form-control">{{note.correctAnswer}}</textarea>
+                    <textarea name="correctAnswer" class="form-control" required>{{note.correctAnswer}}</textarea>
                 </div>
                 <div class="form-group">
-                    <textarea name="wrongAnswerOne" class="form-control">{{note.wrongAnswerOne}}</textarea>
+                    <textarea name="wrongAnswerOne" class="form-control" required>{{note.wrongAnswerOne}}</textarea>
                 </div>
                 <div class="form-group">
-                    <textarea name="wrongAnswerTwo" class="form-control">{{note.wrongAnswerTwo}}</textarea>
+                    <textarea name="wrongAnswerTwo" class="form-control" required>{{note.wrongAnswerTwo}}</textarea>
                 </div>
                 <div class="form-group">
-                    <textarea name="wrongAnswerThree" class="form-control">{{note.wrongAnswerThree}}</textarea>
+                    <textarea name="wrongAnswerThree" class="form-control" required>{{note.wrongAnswerThree}}</textarea>
                 </div>
                 <div class="form-group">
-                    <select name="categoria" class="browser-default custom-select">
-                        <option selected="">Seleccione la categoria</option>
+                    <select name="categoria" class="browser-default custom-select" required>
+                        <option value="">Seleccione la categoria</option>
                         <option value="1">Calidad del agua</option>
                         <option value="2">Ecología costera</option>
                         <option value="3">Hidrogeología</option>
