@@ -63,15 +63,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
-const storage = multer.diskStorage({
-    destination : path.join(__dirname, 'public/img/uploads'),
-    filename: (req, file, cb, filename) => {
-        cb(null, uuid() + path.extname(file.originalname));
-    }
-});
-app.use(multer({
-    storage
-}).single('image'));
 
 //Global Variables
 app.use((req, res, next) => {
