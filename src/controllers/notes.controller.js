@@ -21,7 +21,7 @@ notesCtrl.createNewNote = async (req, res) => {
     const newNote = new Note({ question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, categoria });
     newNote.user = req.user.id;
     await newNote.save();
-    req.flash('success_msg', 'Note Added Successfully');
+    req.flash('success_msg', 'Pregunta Añadida Correctamente');
     res.redirect('/preguntas');
 };
 
@@ -33,7 +33,7 @@ notesCtrl.renderNotes = async (req, res) => {
 notesCtrl.renderEditForm = async (req, res) => {
     const note = await Note.findById(req.params.id);
     if(note.user != req.user.id){
-        req.flash('error_msg', 'Not authorized');
+        req.flash('error_msg', 'No autorizado');
         return res.redirect('/preguntas');
     }
     res.render('preguntas/edit-note', { note })
@@ -42,13 +42,13 @@ notesCtrl.renderEditForm = async (req, res) => {
 notesCtrl.updateNote = async (req, res) => {
     const {question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, categoria} = req.body;
     await Note.findByIdAndUpdate(req.params.id, {question, correctAnswer, wrongAnswerOne, wrongAnswerTwo, wrongAnswerThree, categoria});
-    req.flash('success_msg', 'Note Updated Successfully');
+    req.flash('success_msg', 'Pregunta Actualizada Correctamente');
     res.redirect('/preguntas');
 };
 
 notesCtrl.deleteNote = async (req, res) => {
     const object = await Note.findByIdAndDelete(req.params.id);
-    req.flash('success_msg', 'Note Deleted Successfully');
+    req.flash('success_msg', 'Pregunta Eliminada Correctamente');
     res.redirect('/preguntas');
 };
 

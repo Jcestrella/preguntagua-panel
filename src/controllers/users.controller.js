@@ -10,10 +10,10 @@ usersCtrl.signup = async (req, res) => {
     const { name, email, password, confirm_password } = req.body;
     const errors = [];
     if (password != confirm_password) {
-        errors.push({ text: 'Password do not match' });
+        errors.push({ text: 'Las contraseñas no coinciden' });
     }
     if (password.length < 8) {
-        errors.push({ text: 'Password must be at least 8 characters' });
+        errors.push({ text: 'La contraseñe debe tener al menos 8 caracteres' });
     }
     if (errors.length > 0) {
         res.render('users/signup', {
@@ -24,13 +24,13 @@ usersCtrl.signup = async (req, res) => {
     } else {
         const emailUser = await User.findOne({ email });
         if (emailUser) {
-            req.flash('error_msg', 'The email is already used');
+            req.flash('error_msg', 'El correo ya ha sido utilizado');
             res.redirect('/users/signup');
         } else {
             const newUser = new User({name, email, password});
             newUser.password = await newUser.encryptPassword(password);
             await newUser.save();
-            req.flash('success_msg', 'You are registered');
+            req.flash('success_msg', 'Te has registrado satisfactoriamente');
             res.redirect('/users/signin');
         }
     }
@@ -50,7 +50,7 @@ usersCtrl.signin = passport.authenticate('local', {
 
 usersCtrl.logout = (req, res) => {
     req.logout();
-    req.flash('success_msg', 'You are logged out');
+    req.flash('success_msg', 'Sesión Cerrada');
     res.redirect('/users/signin');
 };
 module.exports = usersCtrl;
